@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanitário A3 Feminino - Guia de Limpeza</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 50%, #e0f2f1 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgba(76, 125, 89, 0.9), rgba(89, 145, 105, 0.8));
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(76, 125, 89, 0.3);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(76, 125, 89, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section h2 {
+            color: #4c7d59;
+            border-bottom: 2px solid #7db46c;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: #5a8068;
+            margin-top: 25px;
+            margin-bottom: 18px;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(76, 125, 89, 0.1);
+        }
+        
+        .schedule-table th,
+        .schedule-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border: none;
+        }
+        
+        .schedule-table th {
+            background: linear-gradient(135deg, #7db46c, #6aa059);
+            color: white;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background: linear-gradient(135deg, #f8fcf8, #f0f8f0);
+        }
+        
+        .schedule-table tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .schedule-table tr:hover {
+            background: linear-gradient(135deg, #e8f5e8, #d4edda);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-table tr:last-child {
+            background: linear-gradient(135deg, #fff2e6, #ffe8d6) !important;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .materials-column {
+            background: linear-gradient(135deg, rgba(248, 252, 248, 0.9), rgba(240, 248, 240, 0.9));
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #7db46c;
+            box-shadow: 0 6px 20px rgba(76, 125, 89, 0.08);
+        }
+        
+        .materials-column h4 {
+            color: #4c7d59;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .materials-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(125, 180, 108, 0.2);
+        }
+        
+        .materials-table td:first-child {
+            font-weight: 600;
+            color: #4c7d59;
+            width: 60px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border: 1px solid #ffcc80;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.1);
+        }
+        
+        .warning-box strong {
+            color: #e65100;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+            margin-top: 20px;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding: 18px 20px 18px 70px;
+            background: linear-gradient(135deg, rgba(248, 252, 248, 0.8), rgba(240, 248, 240, 0.8));
+            border-radius: 12px;
+            position: relative;
+            border-left: 3px solid #7db46c;
+            box-shadow: 0 3px 10px rgba(76, 125, 89, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(76, 125, 89, 0.15);
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #7db46c, #6aa059);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(76, 125, 89, 0.3);
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, rgba(232, 245, 232, 0.9), rgba(212, 237, 218, 0.9));
+            padding: 18px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #7db46c;
+            box-shadow: 0 4px 15px rgba(76, 125, 89, 0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(76, 125, 89, 0.9), rgba(89, 145, 105, 0.8));
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(76, 125, 89, 0.2);
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        /* Animações suaves */
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsividade melhorada */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
+            
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step {
+                padding-left: 60px;
+            }
+            
+            .step::before {
+                width: 25px;
+                height: 25px;
+                left: 15px;
+            }
+        }
+        
+        /* Efeitos especiais */
+        .section:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 40px rgba(76, 125, 89, 0.15);
+        }
+        
+        /* Gradiente personalizado para tabelas */
+        .schedule-table tbody tr {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>SANITÁRIO A3 FEMININO</h1>
+                <p>Guia de Limpeza para Voluntários | Congresso 2025</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">📅</span>Escala de Trabalho - Sexta-feira (12h às 18h)</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Voluntárias Responsáveis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>12h00 às 12h50</strong></td>
+                        <td>Ester e Jozi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>12h50 às 13h40</strong></td>
+                        <td>Nicolly e Maria Alcântara</td>
+                    </tr>
+                    <tr>
+                        <td><strong>13h40 às 14h30</strong></td>
+                        <td>Marlene e Ana Luiza</td>
+                    </tr>
+                    <tr>
+                        <td><strong>14h30 às 15h20</strong></td>
+                        <td>Girlane e Heloísa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>15h20 às 16h10</strong></td>
+                        <td>Preta e Elaine</td>
+                    </tr>
+                    <tr>
+                        <td><strong>16h10 às 17h00</strong></td>
+                        <td>Fran e Stephany</td>
+                    </tr>
+                    <tr>
+                        <td><strong>17h00 às 17h50</strong></td>
+                        <td>Duda e Raphaela <em>(fecham o banheiro)</em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">⚠️</span>Informações Importantes</h2>
+            <div class="warning-box">
+                <strong>CUIDADO:</strong> Sempre use luvas ao limpar áreas contaminadas ou usar produtos químicos. Evite o contato das mãos com o lixo. Retire sempre o lixo junto com os sacos plásticos.
+            </div>
+            <div class="highlight">
+                <strong>Número de Voluntários por Turno:</strong> 2<br>
+                <strong>Durante o programa:</strong> 1 ou 2 voluntários farão inspeção e limpeza de emergência.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">🧽</span>Procedimentos de Limpeza</h2>
+
+            <h3>1. Pias, Torneiras e Bancadas</h3>
+            <div class="steps">
+                <div class="step">
+                    Borrife <strong>Desinfetante Peroxy 4D</strong> nas torneiras e bancadas
+                </div>
+                <div class="step">
+                    Deixe agir por <strong>10 minutos</strong>
+                </div>
+                <div class="step">
+                    Seque com rodinho e <strong>pano descartável azul</strong>
+                </div>
+            </div>
+
+            <h3>2. Vaso Sanitário e/ou Mictório</h3>
+            <div class="steps">
+                <div class="step">
+                    Borrife <strong>Desinfetante Peroxy 4D</strong> na tampa, assento e borda
+                </div>
+                <div class="step">
+                    Deixe agir por <strong>10 minutos</strong> e seque com <strong>pano descartável laranja</strong>
+                </div>
+                <div class="step">
+                    Na parte interna: borrife desinfetante e limpe com escova de vaso
+                </div>
+                <div class="step">
+                    Dê descarga com a tampa abaixada e a escova dentro do vaso
+                </div>
+                <div class="step">
+                    Borrife desinfetante na escova e guarde no suporte
+                </div>
+            </div>
+
+            <h3>3. Piso e Lixeiras</h3>
+            <div class="steps">
+                <div class="step">
+                    Recolha o lixo com vassoura e pá
+                </div>
+                <div class="step">
+                    Se necessário, borrife <strong>Desinfetante Peroxy 4D</strong> no chão
+                </div>
+                <div class="step">
+                    Limpe com rodo, mop úmido e <strong>microfibra vermelha</strong>
+                </div>
+                <div class="step">
+                    Retire os sacos de lixo das lixeiras pequenas, feche bem e coloque no saco maior
+                </div>
+                <div class="step">
+                    No final de cada dia: retire os sacos grandes e deixe-os bem fechados
+                </div>
+            </div>
+
+            <h3>4. Aromatizador (Apenas Durante o Evento)</h3>
+            <div class="steps">
+                <div class="step">
+                    Borrife no alto próximo aos rejuntes
+                </div>
+                <div class="step">
+                    Aplique em uma bolinha de papel higiênico e jogue dentro das lixeiras antes de colocar o saco de lixo
+                </div>
+            </div>
+
+            <h3>5. Finalização</h3>
+            <div class="steps">
+                <div class="step">
+                    Jogue no lixo todos os panos descartáveis usados
+                </div>
+                <div class="step">
+                    Leve as microfibras usadas para o departamento de limpeza
+                </div>
+                <div class="step">
+                    Com as mãos limpas, faça a reposição dos itens de consumo (papel higiênico, papel toalha e sacos de lixo)
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">🧰</span>Materiais Disponíveis no Local</h2>
+            <div class="materials-grid">
+                <div class="materials-column">
+                    <h4>Equipamentos de Limpeza</h4>
+                    <table class="materials-table">
+                        <tr><td>04</td><td>Vassoura de nylon e pá</td></tr>
+                        <tr><td>05</td><td>Rodo (2 grandes e 3 pequenos)</td></tr>
+                        <tr><td>04</td><td>Mop úmido vermelho</td></tr>
+                        <tr><td>01</td><td>Desentupidor com cabo longo</td></tr>
+                        <tr><td>02</td><td>Placas "Piso escorregadio"</td></tr>
+                    </table>
+                </div>
+                
+                <div class="materials-column">
+                    <h4>Produtos e Descartáveis</h4>
+                    <table class="materials-table">
+                        <tr><td>05</td><td>Borrifador Desinfetante Peroxy 4D</td></tr>
+                        <tr><td>02</td><td>Borrifador de Aromatizador</td></tr>
+                        <tr><td>10</td><td>Pano descartável Azul (Geral)</td></tr>
+                        <tr><td>50</td><td>Pano descartável Laranja (vaso)</td></tr>
+                        <tr><td>12</td><td>Microfibra vermelha (grande)</td></tr>
+                    </table>
+                </div>
+                
+                <div class="materials-column">
+                    <h4>Proteção e Lixo</h4>
+                    <table class="materials-table">
+                        <tr><td>02</td><td>Caixas de luvas descartáveis</td></tr>
+                        <tr><td>02</td><td>Pacote de Saco de lixo 20L (100unid)</td></tr>
+                        <tr><td>08</td><td>Saco de lixo de 100L</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Lembre-se:</strong> Devolva esta ficha no departamento de limpeza ao final do seu turno</p>
+            <p>Agradecemos seu serviço voluntário! 💚</p>
+        </div>
+    </div>
+</body>
+</html>
