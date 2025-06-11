@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanitário A3 Feminino - Guia de Limpeza</title>
+    <title>Guia de Limpeza - Congresso 2025</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -67,6 +67,69 @@
             font-size: 1.1em;
             opacity: 0.95;
             font-weight: 400;
+        }
+        
+        /* Seletor de Setor */
+        .sector-selector {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(76, 125, 89, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .sector-selector h2 {
+            color: #4c7d59;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+        
+        .sector-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .sector-btn {
+            background: linear-gradient(135deg, #7db46c, #6aa059);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 125, 89, 0.2);
+        }
+        
+        .sector-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 125, 89, 0.3);
+        }
+        
+        .sector-btn.active {
+            background: linear-gradient(135deg, #4c7d59, #5a8068);
+            box-shadow: 0 8px 25px rgba(76, 125, 89, 0.4);
+        }
+        
+        .sector-btn .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        /* Conteúdo dos Setores */
+        .sector-content {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .sector-content.active {
+            display: block;
         }
         
         .section {
@@ -263,11 +326,108 @@
             margin-right: 8px;
         }
         
-        /* Animações suaves */
-        .section {
-            animation: fadeInUp 0.6s ease-out;
+        /* Setor específico - Auditório */
+        .auditorium-info {
+            background: linear-gradient(135deg, #fff3e0, #ffe8cc);
+            border: 1px solid #ffb74d;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.1);
         }
         
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            color: #4c7d59;
+            box-shadow: 0 2px 8px rgba(76, 125, 89, 0.1);
+        }
+        
+        /* Estilos para o mapa do auditório */
+        .auditorium-map {
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 248, 240, 0.9), rgba(255, 235, 205, 0.9));
+            border-radius: 12px;
+            border-left: 4px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.1);
+        }
+        
+        .auditorium-map h3 {
+            color: #e65100;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .map-container {
+            text-align: center;
+        }
+        
+        .auditorium-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 3px solid #fff;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .auditorium-image:hover {
+            transform: scale(1.02);
+            cursor: zoom-in;
+        }
+        
+        .map-caption {
+            font-size: 1.1em;
+            color: #e65100;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        /* Efeitos especiais para zoom */
+        .auditorium-image.zoomed {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.5);
+            z-index: 1000;
+            max-width: 90vw;
+            max-height: 90vh;
+            cursor: zoom-out;
+        }
+        
+        .zoom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: none;
+        }
+        
+        .zoom-overlay.active {
+            display: block;
+        }
+        
+        /* Animações */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -279,7 +439,17 @@
             }
         }
         
-        /* Responsividade melhorada */
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 40px rgba(76, 125, 89, 0.15);
+        }
+        
+        /* Responsividade */
         @media (max-width: 768px) {
             .container {
                 padding: 20px 15px;
@@ -310,18 +480,19 @@
                 height: 25px;
                 left: 15px;
             }
-        }
-        
-        /* Efeitos especiais */
-        .section:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            box-shadow: 0 12px 40px rgba(76, 125, 89, 0.15);
-        }
-        
-        /* Gradiente personalizado para tabelas */
-        .schedule-table tbody tr {
-            transition: all 0.3s ease;
+            
+            .sector-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .auditorium-image {
+                border: 2px solid #fff;
+            }
+            
+            .map-caption {
+                font-size: 1em;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -329,182 +500,552 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <h1>SANITÁRIO A3 FEMININO</h1>
-                <p>Guia de Limpeza para Voluntários | Congresso 2025</p>
+                <h1>GUIA DE LIMPEZA</h1>
+                <p>Congresso 2025 - Manual para Voluntários</p>
             </div>
         </div>
 
-        <div class="section">
-            <h2><span class="icon">📅</span>Escala de Trabalho - Sexta-feira (12h às 18h)</h2>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Horário</th>
-                        <th>Voluntárias Responsáveis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>12h00 às 12h50</strong></td>
-                        <td>Ester e Jozi</td>
-                    </tr>
-                    <tr>
-                        <td><strong>12h50 às 13h40</strong></td>
-                        <td>Nicolly e Maria Alcântara</td>
-                    </tr>
-                    <tr>
-                        <td><strong>13h40 às 14h30</strong></td>
-                        <td>Marlene e Ana Luiza</td>
-                    </tr>
-                    <tr>
-                        <td><strong>14h30 às 15h20</strong></td>
-                        <td>Girlane e Heloísa</td>
-                    </tr>
-                    <tr>
-                        <td><strong>15h20 às 16h10</strong></td>
-                        <td>Preta e Elaine</td>
-                    </tr>
-                    <tr>
-                        <td><strong>16h10 às 17h00</strong></td>
-                        <td>Fran e Stephany</td>
-                    </tr>
-                    <tr>
-                        <td><strong>17h00 às 17h50</strong></td>
-                        <td>Duda e Raphaela <em>(fecham o banheiro)</em></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2><span class="icon">⚠️</span>Informações Importantes</h2>
-            <div class="warning-box">
-                <strong>CUIDADO:</strong> Sempre use luvas ao limpar áreas contaminadas ou usar produtos químicos. Evite o contato das mãos com o lixo. Retire sempre o lixo junto com os sacos plásticos.
-            </div>
-            <div class="highlight">
-                <strong>Número de Voluntários por Turno:</strong> 2<br>
-                <strong>Durante o programa:</strong> 1 ou 2 voluntários farão inspeção e limpeza de emergência.
+        <div class="sector-selector">
+            <h2>🎯 Selecione seu Setor de Trabalho</h2>
+            <div class="sector-buttons">
+                <button class="sector-btn" onclick="showSector('feminino')">
+                    <span class="emoji">🚺</span>Sanitário A3 Feminino
+                </button>
+                <button class="sector-btn" onclick="showSector('masculino')">
+                    <span class="emoji">🚹</span>Sanitário A3 Masculino
+                </button>
+                <button class="sector-btn" onclick="showSector('auditorio')">
+                    <span class="emoji">🎭</span>Auditório A - Setor Laranja
+                </button>
             </div>
         </div>
 
-        <div class="section">
-            <h2><span class="icon">🧽</span>Procedimentos de Limpeza</h2>
+        <!-- SANITÁRIO FEMININO -->
+        <div id="feminino" class="sector-content">
+            <div class="section">
+                <h2><span class="icon">📅</span>Escala de Trabalho - Sexta-feira (12h às 18h)</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Voluntárias Responsáveis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>12h00 às 12h50</strong></td>
+                            <td>Ester e Jozi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>12h50 às 13h40</strong></td>
+                            <td>Nicolly e Maria Alcântara</td>
+                        </tr>
+                        <tr>
+                            <td><strong>13h40 às 14h30</strong></td>
+                            <td>Marlene e Ana Luiza</td>
+                        </tr>
+                        <tr>
+                            <td><strong>14h30 às 15h20</strong></td>
+                            <td>Girlane e Heloísa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>15h20 às 16h10</strong></td>
+                            <td>Preta e Elaine</td>
+                        </tr>
+                        <tr>
+                            <td><strong>16h10 às 17h00</strong></td>
+                            <td>Fran e Stephany</td>
+                        </tr>
+                        <tr>
+                            <td><strong>17h00 às 17h50</strong></td>
+                            <td>Duda e Raphaela <em>(fecham o banheiro)</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h3>1. Pias, Torneiras e Bancadas</h3>
-            <div class="steps">
-                <div class="step">
-                    Borrife <strong>Desinfetante Peroxy 4D</strong> nas torneiras e bancadas
+            <div class="section">
+                <h2><span class="icon">⚠️</span>Informações Importantes</h2>
+                <div class="warning-box">
+                    <strong>CUIDADO:</strong> Sempre use luvas ao limpar áreas contaminadas ou usar produtos químicos. Evite o contato das mãos com o lixo. Retire sempre o lixo junto com os sacos plásticos.
                 </div>
-                <div class="step">
-                    Deixe agir por <strong>10 minutos</strong>
-                </div>
-                <div class="step">
-                    Seque com rodinho e <strong>pano descartável azul</strong>
+                <div class="highlight">
+                    <strong>Número de Voluntários por Turno:</strong> 2<br>
+                    <strong>Durante o programa:</strong> 1 ou 2 voluntários farão inspeção e limpeza de emergência.
                 </div>
             </div>
 
-            <h3>2. Vaso Sanitário e/ou Mictório</h3>
-            <div class="steps">
-                <div class="step">
-                    Borrife <strong>Desinfetante Peroxy 4D</strong> na tampa, assento e borda
+            <div class="section">
+                <h2><span class="icon">🧽</span>Procedimentos de Limpeza</h2>
+
+                <h3>1. Pias, Torneiras e Bancadas</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife <strong>Desinfetante Peroxy 4D</strong> nas torneiras e bancadas
+                    </div>
+                    <div class="step">
+                        Deixe agir por <strong>10 minutos</strong>
+                    </div>
+                    <div class="step">
+                        Seque com rodinho e <strong>pano descartável azul</strong>
+                    </div>
                 </div>
-                <div class="step">
-                    Deixe agir por <strong>10 minutos</strong> e seque com <strong>pano descartável laranja</strong>
+
+                <h3>2. Vaso Sanitário</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife <strong>Desinfetante Peroxy 4D</strong> na tampa, assento e borda
+                    </div>
+                    <div class="step">
+                        Deixe agir por <strong>10 minutos</strong> e seque com <strong>pano descartável laranja</strong>
+                    </div>
+                    <div class="step">
+                        Na parte interna: borrife desinfetante e limpe com escova de vaso
+                    </div>
+                    <div class="step">
+                        Dê descarga com a tampa abaixada e a escova dentro do vaso
+                    </div>
+                    <div class="step">
+                        Borrife desinfetante na escova e guarde no suporte
+                    </div>
                 </div>
-                <div class="step">
-                    Na parte interna: borrife desinfetante e limpe com escova de vaso
+
+                <h3>3. Piso e Lixeiras</h3>
+                <div class="steps">
+                    <div class="step">
+                        Recolha o lixo com vassoura e pá
+                    </div>
+                    <div class="step">
+                        Se necessário, borrife <strong>Desinfetante Peroxy 4D</strong> no chão
+                    </div>
+                    <div class="step">
+                        Limpe com rodo, mop úmido e <strong>microfibra vermelha</strong>
+                    </div>
+                    <div class="step">
+                        Retire os sacos de lixo das lixeiras pequenas, feche bem e coloque no saco maior
+                    </div>
+                    <div class="step">
+                        No final de cada dia: retire os sacos grandes e deixe-os bem fechados
+                    </div>
                 </div>
-                <div class="step">
-                    Dê descarga com a tampa abaixada e a escova dentro do vaso
+
+                <h3>4. Aromatizador (Apenas Durante o Evento)</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife no alto próximo aos rejuntes
+                    </div>
+                    <div class="step">
+                        Aplique em uma bolinha de papel higiênico e jogue dentro das lixeiras antes de colocar o saco de lixo
+                    </div>
                 </div>
-                <div class="step">
-                    Borrife desinfetante na escova e guarde no suporte
+
+                <h3>5. Finalização</h3>
+                <div class="steps">
+                    <div class="step">
+                        Jogue no lixo todos os panos descartáveis usados
+                    </div>
+                    <div class="step">
+                        Leve as microfibras usadas para o departamento de limpeza
+                    </div>
+                    <div class="step">
+                        Com as mãos limpas, faça a reposição dos itens de consumo (papel higiênico, papel toalha e sacos de lixo)
+                    </div>
                 </div>
             </div>
 
-            <h3>3. Piso e Lixeiras</h3>
-            <div class="steps">
-                <div class="step">
-                    Recolha o lixo com vassoura e pá
-                </div>
-                <div class="step">
-                    Se necessário, borrife <strong>Desinfetante Peroxy 4D</strong> no chão
-                </div>
-                <div class="step">
-                    Limpe com rodo, mop úmido e <strong>microfibra vermelha</strong>
-                </div>
-                <div class="step">
-                    Retire os sacos de lixo das lixeiras pequenas, feche bem e coloque no saco maior
-                </div>
-                <div class="step">
-                    No final de cada dia: retire os sacos grandes e deixe-os bem fechados
-                </div>
-            </div>
-
-            <h3>4. Aromatizador (Apenas Durante o Evento)</h3>
-            <div class="steps">
-                <div class="step">
-                    Borrife no alto próximo aos rejuntes
-                </div>
-                <div class="step">
-                    Aplique em uma bolinha de papel higiênico e jogue dentro das lixeiras antes de colocar o saco de lixo
-                </div>
-            </div>
-
-            <h3>5. Finalização</h3>
-            <div class="steps">
-                <div class="step">
-                    Jogue no lixo todos os panos descartáveis usados
-                </div>
-                <div class="step">
-                    Leve as microfibras usadas para o departamento de limpeza
-                </div>
-                <div class="step">
-                    Com as mãos limpas, faça a reposição dos itens de consumo (papel higiênico, papel toalha e sacos de lixo)
+            <div class="section">
+                <h2><span class="icon">🧰</span>Materiais Disponíveis no Local</h2>
+                <div class="materials-grid">
+                    <div class="materials-column">
+                        <h4>Equipamentos de Limpeza</h4>
+                        <table class="materials-table">
+                            <tr><td>04</td><td>Vassoura de nylon e pá</td></tr>
+                            <tr><td>05</td><td>Rodo (2 grandes e 3 pequenos)</td></tr>
+                            <tr><td>04</td><td>Mop úmido vermelho</td></tr>
+                            <tr><td>01</td><td>Desentupidor com cabo longo</td></tr>
+                            <tr><td>02</td><td>Placas "Piso escorregadio"</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Produtos e Descartáveis</h4>
+                        <table class="materials-table">
+                            <tr><td>05</td><td>Borrifador Desinfetante Peroxy 4D</td></tr>
+                            <tr><td>02</td><td>Borrifador de Aromatizador</td></tr>
+                            <tr><td>10</td><td>Pano descartável Azul (Geral)</td></tr>
+                            <tr><td>50</td><td>Pano descartável Laranja (vaso)</td></tr>
+                            <tr><td>12</td><td>Microfibra vermelha (grande)</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Proteção e Lixo</h4>
+                        <table class="materials-table">
+                            <tr><td>02</td><td>Caixas de luvas descartáveis</td></tr>
+                            <tr><td>02</td><td>Pacote de Saco de lixo 20L (100unid)</td></tr>
+                            <tr><td>08</td><td>Saco de lixo de 100L</td></tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2><span class="icon">🧰</span>Materiais Disponíveis no Local</h2>
-            <div class="materials-grid">
-                <div class="materials-column">
-                    <h4>Equipamentos de Limpeza</h4>
-                    <table class="materials-table">
-                        <tr><td>04</td><td>Vassoura de nylon e pá</td></tr>
-                        <tr><td>05</td><td>Rodo (2 grandes e 3 pequenos)</td></tr>
-                        <tr><td>04</td><td>Mop úmido vermelho</td></tr>
-                        <tr><td>01</td><td>Desentupidor com cabo longo</td></tr>
-                        <tr><td>02</td><td>Placas "Piso escorregadio"</td></tr>
-                    </table>
+        <!-- SANITÁRIO MASCULINO -->
+        <div id="masculino" class="sector-content">
+            <div class="section">
+                <h2><span class="icon">📅</span>Escala de Trabalho - Domingo (08h20 às 12h)</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Voluntários Responsáveis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>08h20 às 09h15</strong></td>
+                            <td>Leandro e Reginaldo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>09h15 às 10h10</strong></td>
+                            <td>Carlucio e Ademario</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10h10 às 11h05</strong></td>
+                            <td>Robson e João</td>
+                        </tr>
+                        <tr>
+                            <td><strong>11h05 às 12h00</strong></td>
+                            <td>Renan e Leandro</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">⚠️</span>Informações Importantes</h2>
+                <div class="warning-box">
+                    <strong>CUIDADO:</strong> Sempre use luvas ao limpar áreas contaminadas ou usar produtos químicos. Evite o contato das mãos com o lixo. Retire sempre o lixo junto com os sacos plásticos.
+                </div>
+                <div class="highlight">
+                    <strong>Número de Voluntários por Turno:</strong> 2<br>
+                    <strong>Total de Voluntários:</strong> 5<br>
+                    <strong>Durante o programa:</strong> 1 ou 2 voluntários farão inspeção e limpeza de emergência.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🧽</span>Procedimentos de Limpeza</h2>
+
+                <h3>1. Pias, Torneiras e Bancadas</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife <strong>Desinfetante Peroxy 4D</strong> nas torneiras e bancadas
+                    </div>
+                    <div class="step">
+                        Deixe agir por <strong>10 minutos</strong>
+                    </div>
+                    <div class="step">
+                        Seque com rodinho e <strong>pano descartável azul</strong>
+                    </div>
+                </div>
+
+                <h3>2. Vaso Sanitário e/ou Mictório</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife <strong>Desinfetante Peroxy 4D</strong> na tampa, assento e borda
+                    </div>
+                    <div class="step">
+                        Deixe agir por <strong>10 minutos</strong> e seque com <strong>pano descartável laranja</strong>
+                    </div>
+                    <div class="step">
+                        Na parte interna: borrife desinfetante e limpe com escova de vaso
+                    </div>
+                    <div class="step">
+                        Dê descarga com a tampa abaixada e a escova dentro do vaso
+                    </div>
+                    <div class="step">
+                        Borrife desinfetante na escova e guarde no suporte
+                    </div>
+                </div>
+
+                <h3>3. Piso e Lixeiras</h3>
+                <div class="steps">
+                    <div class="step">
+                        <strong>Limpeza de Manutenção:</strong> Recolha o lixo com vassoura e pá
+                    </div>
+                    <div class="step">
+                        Se necessário, borrife <strong>Desinfetante Peroxy 4D</strong> no chão
+                    </div>
+                    <div class="step">
+                        Limpe com rodo, mop úmido e <strong>microfibra vermelha</strong>
+                    </div>
+                    <div class="step">
+                        Leve as microfibras usadas para o departamento de limpeza
+                    </div>
+                    <div class="step">
+                        Retire os sacos de lixo das lixeiras pequenas, feche bem e coloque no saco maior
+                    </div>
+                    <div class="step">
+                        Quando necessário e no final de cada dia: retire os sacos grandes e deixe-os bem fechados
+                    </div>
+                </div>
+
+                <h3>4. Aromatizador (Apenas Durante o Evento)</h3>
+                <div class="steps">
+                    <div class="step">
+                        Borrife no alto próximo aos rejuntes
+                    </div>
+                    <div class="step">
+                        Aplique em uma bolinha de papel higiênico e jogue dentro das lixeiras antes de colocar o saco de lixo
+                    </div>
+                </div>
+
+                <h3>5. Finalização</h3>
+                <div class="steps">
+                    <div class="step">
+                        Ao término da limpeza, jogue no lixo todos os panos descartáveis usados
+                    </div>
+                    <div class="step">
+                        Com as mãos limpas, faça a reposição dos itens de consumo (papel higiênico, papel toalha e sacos de lixo)
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🧰</span>Materiais Disponíveis no Local</h2>
+                <div class="materials-grid">
+                    <div class="materials-column">
+                        <h4>Equipamentos de Limpeza</h4>
+                        <table class="materials-table">
+                            <tr><td>04</td><td>Vassoura de nylon e pá</td></tr>
+                            <tr><td>05</td><td>Rodo (2 grandes e 3 pequenos)</td></tr>
+                            <tr><td>04</td><td>Mop úmido vermelho</td></tr>
+                            <tr><td>01</td><td>Desentupidor com cabo longo</td></tr>
+                            <tr><td>02</td><td>Placas "Piso escorregadio"</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Produtos e Descartáveis</h4>
+                        <table class="materials-table">
+                            <tr><td>05</td><td>Borrifador Desinfetante Peroxy 4D</td></tr>
+                            <tr><td>02</td><td>Borrifador de Aromatizador</td></tr>
+                            <tr><td>10</td><td>Pano descartável Azul (Geral)</td></tr>
+                            <tr><td>50</td><td>Pano descartável Laranja (vaso)</td></tr>
+                            <tr><td>12</td><td>Microfibra vermelha (grande)</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Proteção e Lixo</h4>
+                        <table class="materials-table">
+                            <tr><td>02</td><td>Caixas de luvas descartáveis</td></tr>
+                            <tr><td>02</td><td>Pacote de Saco de lixo 20L (100unid)</td></tr>
+                            <tr><td>08</td><td>Saco de lixo de 100L</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUDITÓRIO -->
+        <div id="auditorio" class="sector-content">
+            <div class="section">
+                <h2><span class="icon">📅</span>Escala de Trabalho - Sábado (17h10)</h2>
+                <div class="auditorium-info">
+                    <strong>🎯 Setor Responsável:</strong> Laranja<br>
+                    <strong>📍 Localização:</strong> Conforme mapa abaixo
                 </div>
                 
-                <div class="materials-column">
-                    <h4>Produtos e Descartáveis</h4>
-                    <table class="materials-table">
-                        <tr><td>05</td><td>Borrifador Desinfetante Peroxy 4D</td></tr>
-                        <tr><td>02</td><td>Borrifador de Aromatizador</td></tr>
-                        <tr><td>10</td><td>Pano descartável Azul (Geral)</td></tr>
-                        <tr><td>50</td><td>Pano descartável Laranja (vaso)</td></tr>
-                        <tr><td>12</td><td>Microfibra vermelha (grande)</td></tr>
-                    </table>
+                <!-- MAPA DO AUDITÓRIO -->
+                <div class="auditorium-map">
+                    <h3>🗺️ Mapa do Auditório A - Setor Laranja</h3>
+                    <div class="map-container">
+                        <img src="https://i.postimg.cc/gJ5mHZLc/Imagem-do-Whats-App-de-2025-05-10-s-13-27-14-17d92892.jpg" 
+                             alt="Mapa do Auditório A - Setor Laranja destacado" 
+                             class="auditorium-image">
+                        <p class="map-caption">📍 <strong>Área de responsabilidade:</strong> Setor Laranja (destacado na imagem)</p>
+                    </div>
                 </div>
                 
-                <div class="materials-column">
-                    <h4>Proteção e Lixo</h4>
-                    <table class="materials-table">
-                        <tr><td>02</td><td>Caixas de luvas descartáveis</td></tr>
-                        <tr><td>02</td><td>Pacote de Saco de lixo 20L (100unid)</td></tr>
-                        <tr><td>08</td><td>Saco de lixo de 100L</td></tr>
-                    </table>
+                <h3>👥 Equipe Responsável</h3>
+                <div class="team-grid">
+                    <div class="team-member">Leandro</div>
+                    <div class="team-member">Robson</div>
+                    <div class="team-member">Raphaela</div>
+                    <div class="team-member">Elaine</div>
+                    <div class="team-member">Bruna</div>
+                    <div class="team-member">Preta</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">⚠️</span>Informações Importantes</h2>
+                <div class="highlight">
+                    <strong>Total de Voluntários:</strong> 6 (para setor laranja)<br>
+                    <strong>Capacidade total do auditório:</strong> 25 voluntários<br>
+                    <strong>Horário:</strong> Sábado às 17h10
+                </div>
+                <div class="warning-box">
+                    <strong>IMPORTANTE:</strong> Retire o material no Departamento de Limpeza antes de iniciar o trabalho. Não é preciso fazer limpeza durante o evento, exceto em situações de emergência.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🧽</span>Procedimentos de Limpeza</h2>
+
+                <h3>1. Limpeza Durante o Evento (Apenas Emergências)</h3>
+                <div class="steps">
+                    <div class="step">
+                        Utilize <strong>papel toalha</strong> para recolher toda a sujeira possível
+                    </div>
+                    <div class="step">
+                        Descarte imediatamente em um <strong>saco de lixo fechado</strong>
+                    </div>
+                    <div class="step">
+                        Borrife <strong>Detergente Peroxy 4D</strong> na área afetada
+                    </div>
+                    <div class="step">
+                        Limpe com <strong>pano descartável azul</strong> (cadeiras) ou <strong>pano de chão</strong> (piso)
+                    </div>
+                </div>
+
+                <h3>2. Limpeza ao Final de Cada Dia</h3>
+                <div class="steps">
+                    <div class="step">
+                        Passe <strong>Mop Pó</strong> em todo o setor e recolha todo o lixo
+                    </div>
+                    <div class="step">
+                        Se houver necessidade, aplique <strong>Detergente Peroxy 4D</strong> com borrifador
+                    </div>
+                    <div class="step">
+                        Limpe o piso com <strong>mop úmido azul</strong> apenas onde houver manchas de alimentos e bebidas
+                    </div>
+                    <div class="step">
+                        Leve as <strong>microfibras usadas</strong> para o departamento de limpeza
+                    </div>
+                    <div class="step">
+                        Leve os <strong>itens esquecidos</strong> para o departamento de perdidos e achados
+                    </div>
+                    <div class="step">
+                        Ao término, deixe todo o <strong>material de limpeza</strong> no Departamento de Limpeza
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🧰</span>Materiais a Retirar no Departamento</h2>
+                <div class="materials-grid">
+                    <div class="materials-column">
+                        <h4>Equipamentos Principais</h4>
+                        <table class="materials-table">
+                            <tr><td>12</td><td>Mop pó 40cm</td></tr>
+                            <tr><td>06</td><td>Mop pó 1,20m</td></tr>
+                            <tr><td>06</td><td>Vassoura mini</td></tr>
+                            <tr><td>06</td><td>Pá coletora</td></tr>
+                            <tr><td>01</td><td>Mop úmido azul</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Produtos e Descartáveis</h4>
+                        <table class="materials-table">
+                            <tr><td>01</td><td>Borrifador Detergente Peroxy 4D</td></tr>
+                            <tr><td>02</td><td>Microfibra azul grande</td></tr>
+                            <tr><td>10</td><td>Saco de lixo 20L</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="materials-column">
+                        <h4>Kit de Emergência</h4>
+                        <table class="materials-table">
+                            <tr><td>--</td><td>Papel toalha</td></tr>
+                            <tr><td>01</td><td>Saco de lixo extra</td></tr>
+                            <tr><td>01</td><td>Borrifador Detergente Peroxy 4D</td></tr>
+                            <tr><td>--</td><td>Pano descartável azul</td></tr>
+                            <tr><td>--</td><td>Pano de chão</td></tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p><strong>Lembre-se:</strong> Devolva esta ficha no departamento de limpeza ao final do seu turno</p>
+            <p><strong>Lembre-se:</strong> Devolva a ficha no departamento de limpeza ao final do seu turno</p>
             <p>Agradecemos seu serviço voluntário! 💚</p>
         </div>
     </div>
+
+    <script>
+        function showSector(sectorId) {
+            // Ocultar todos os conteúdos
+            const contents = document.querySelectorAll('.sector-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os botões
+            const buttons = document.querySelectorAll('.sector-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Mostrar conteúdo selecionado
+            document.getElementById(sectorId).classList.add('active');
+            
+            // Ativar botão selecionado
+            event.target.classList.add('active');
+            
+            // Scroll suave para o conteúdo
+            setTimeout(() => {
+                document.getElementById(sectorId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funcionalidade de zoom na imagem do auditório
+            const auditoriumImage = document.querySelector('.auditorium-image');
+            const body = document.body;
+            
+            if (auditoriumImage) {
+                auditoriumImage.addEventListener('click', function() {
+                    // Criar overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'zoom-overlay active';
+                    
+                    // Clonar a imagem para zoom
+                    const zoomedImage = this.cloneNode(true);
+                    zoomedImage.className = 'auditorium-image zoomed';
+                    
+                    // Adicionar elementos ao body
+                    body.appendChild(overlay);
+                    body.appendChild(zoomedImage);
+                    
+                    // Fechar ao clicar
+                    function closeZoom() {
+                        overlay.remove();
+                        zoomedImage.remove();
+                    }
+                    
+                    overlay.addEventListener('click', closeZoom);
+                    zoomedImage.addEventListener('click', closeZoom);
+                    
+                    // Fechar com ESC
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') {
+                            closeZoom();
+                        }
+                    });
+                });
+            }
+            
+            // Mostrar setor feminino por padrão
+            document.querySelector('.sector-btn').click();
+        });
+    </script>
 </body>
 </html>
